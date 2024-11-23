@@ -11,9 +11,9 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
+            scroll-behavior: smooth;
         }
         .container {
             text-align: center;
@@ -21,19 +21,86 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 50px 20px;
+            width: 80%;
+            max-width: 800px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        h1 {
+        .container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2 {
             color: #333333;
         }
         p {
             color: #666666;
+            line-height: 1.6;
+        }
+        section {
+            margin-bottom: 80px;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Animação ao rolar */
+        .reveal {
+            position: relative;
+            opacity: 0;
+            transition: all 1s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container fade-in">
         <h1>Bem-vindo ao Meu Site!</h1>
         <p>Obrigado por visitar! Este é um exemplo simples de uma página inicial com uma introdução de boas-vindas.</p>
     </div>
+
+    <section class="container reveal">
+        <h2>Sobre Nós</h2>
+        <p>Nós somos uma equipe dedicada a fornecer conteúdo de qualidade e uma experiência incrível para nossos visitantes.</p>
+    </section>
+
+    <section class="container reveal">
+        <h2>Serviços</h2>
+        <p>Oferecemos uma ampla gama de serviços, incluindo desenvolvimento web, design gráfico, e consultoria em tecnologia.</p>
+    </section>
+
+    <section class="container reveal">
+        <h2>Contato</h2>
+        <p>Fale conosco através do nosso <a href="mailto:contato@exemplo.com">e-mail</a> ou siga-nos nas redes sociais!</p>
+    </section>
+
+    <script>
+        // Função para revelar seções ao rolar a página
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.reveal').forEach((section) => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight - 50) {
+                    section.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
