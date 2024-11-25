@@ -2,53 +2,146 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Meu Perfil</title>
+    <title>Meu Perfil Profissional</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #2c2c2c;
-            color: #f0f0f0;
+        :root {
+            --dark-gray: #1e1e1e;
+            --blue-accent: #4169E1;
+            --light-gray: #2c2c2c;
+            --text-color: #f0f0f0;
+        }
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--dark-gray);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .container {
             display: flex;
             min-height: 100vh;
         }
         .side-stripe {
-            width: 20px;
-            background-color: #4169E1;
+            width: 25px;
+            background: linear-gradient(to bottom, var(--blue-accent), var(--dark-gray));
+            animation: pulse 3s infinite alternate;
         }
         .content {
             flex-grow: 1;
-            padding: 40px;
-            max-width: 800px;
+            padding: 50px;
+            background-color: var(--light-gray);
+            max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        h1, h2 {
+            color: var(--blue-accent);
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
         }
         h1 {
-            color: #ffffff;
-            border-bottom: 2px solid #4169E1;
+            font-size: 2.5em;
+            border-bottom: 3px solid var(--blue-accent);
             padding-bottom: 10px;
+            animation-delay: 0.2s;
+        }
+        h2 {
+            font-size: 1.8em;
+            animation-delay: 0.4s;
+        }
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill-item {
+            background-color: var(--blue-accent);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            opacity: 0;
+            transform: scale(0.5);
+            animation: popIn 0.5s forwards;
+        }
+        .skill-item:nth-child(1) { animation-delay: 0.6s; }
+        .skill-item:nth-child(2) { animation-delay: 0.7s; }
+        .skill-item:nth-child(3) { animation-delay: 0.8s; }
+        
+        .contact-info {
+            margin-top: 30px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 1s;
+        }
+        .contact-info a {
+            color: var(--blue-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .contact-info a:hover {
+            color: white;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes popIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes pulse {
+            from { opacity: 0.7; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .side-stripe { width: 100%; height: 15px; }
+            .content { padding: 20px; }
         }
     </style>
 </head>
 <body>
-    <div class="side-stripe"></div>
-    <div class="content">
-        <h1>Sobre Mim</h1>
-        <p>Aqui você pode adicionar informações pessoais, sua história, interesses, habilidades e objetivos.</p>
-        
-        <h2>Experiência</h2>
-        <p>Descreva sua experiência profissional ou acadêmica.</p>
-        
-        <h2>Habilidades</h2>
-        <ul>
-            <li>Habilidade 1</li>
-            <li>Habilidade 2</li>
-            <li>Habilidade 3</li>
-        </ul>
-        
-        <h2>Contato</h2>
-        <p>Email: seuemail@exemplo.com</p>
+    <div class="container">
+        <div class="side-stripe"></div>
+        <div class="content">
+            <h1>Nome Completo</h1>
+            
+            <h2>Sobre Mim</h2>
+            <p>Uma breve descrição profissional e pessoal que destaca suas principais características e objetivos.</p>
+            
+            <h2>Habilidades</h2>
+            <div class="skill-list">
+                <div class="skill-item">Programação</div>
+                <div class="skill-item">Design</div>
+                <div class="skill-item">Gestão de Projetos</div>
+            </div>
+            
+            <h2>Experiência Profissional</h2>
+            <p>Detalhes sobre sua trajetória profissional, principais realizações e empresas.</p>
+            
+            <div class="contact-info">
+                <h2>Contato</h2>
+                <p>Email: <a href="mailto:seuemail@exemplo.com">seuemail@exemplo.com</a></p>
+                <p>Telefone: (XX) XXXX-XXXX</p>
+                <p>LinkedIn: <a href="#">Seu perfil</a></p>
+            </div>
+        </div>
+        <div class="side-stripe"></div>
     </div>
-    <div class="side-stripe"></div>
 </body>
 </html>
