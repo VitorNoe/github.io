@@ -2,13 +2,14 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Meu Perfil Profissional</title>
+    <title>Currículo Profissional</title>
     <style>
         :root {
             --dark-gray: #1e1e1e;
             --blue-accent: #4169E1;
             --light-gray: #2c2c2c;
             --text-color: #f0f0f0;
+            --shadow-color: rgba(0, 0, 0, 0.4);
         }
         * {
             margin: 0;
@@ -20,128 +21,151 @@
             font-family: 'Arial', sans-serif;
             background-color: var(--dark-gray);
             color: var(--text-color);
-            line-height: 1.6;
+            line-height: 1.8;
+            overflow-x: hidden;
         }
         .container {
             display: flex;
-            min-height: 100vh;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 10%;
         }
-        .side-stripe {
-            width: 25px;
-            background: linear-gradient(to bottom, var(--blue-accent), var(--dark-gray));
-            animation: pulse 3s infinite alternate;
-        }
-        .content {
-            flex-grow: 1;
-            padding: 50px;
-            background-color: var(--light-gray);
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
         }
         h1, h2 {
             color: var(--blue-accent);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        h1::after, h2::after {
+            content: '';
+            width: 50px;
+            height: 4px;
+            background-color: var(--blue-accent);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .section {
+            background-color: var(--light-gray);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            margin-bottom: 30px;
+            width: 100%;
             opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s forwards;
+            transform: translateY(30px);
+            transition: opacity 1s, transform 1s;
         }
-        h1 {
-            font-size: 2.5em;
-            border-bottom: 3px solid var(--blue-accent);
-            padding-bottom: 10px;
-            animation-delay: 0.2s;
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        h2 {
-            font-size: 1.8em;
-            animation-delay: 0.4s;
-        }
-        .skill-list {
+        .skills, .portfolio, .contact {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
-        .skill-item {
+        .skill-item, .portfolio-item {
             background-color: var(--blue-accent);
             color: white;
-            padding: 8px 15px;
+            padding: 10px 15px;
             border-radius: 20px;
-            opacity: 0;
-            transform: scale(0.5);
-            animation: popIn 0.5s forwards;
+            text-align: center;
+            flex: 1 1 calc(33.333% - 30px);
+            min-width: 150px;
         }
-        .skill-item:nth-child(1) { animation-delay: 0.6s; }
-        .skill-item:nth-child(2) { animation-delay: 0.7s; }
-        .skill-item:nth-child(3) { animation-delay: 0.8s; }
-        
-        .contact-info {
-            margin-top: 30px;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-            animation-delay: 1s;
+        .portfolio-item:hover {
+            background-color: #3159C1;
         }
         .contact-info a {
             color: var(--blue-accent);
             text-decoration: none;
-            transition: color 0.3s ease;
         }
         .contact-info a:hover {
             color: white;
         }
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes popIn {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        @keyframes pulse {
-            from { opacity: 0.7; }
-            to { opacity: 1; }
-        }
-        @keyframes fadeIn {
-            to { opacity: 1; }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            box-shadow: 0 5px 10px var(--shadow-color);
         }
         @media (max-width: 768px) {
-            .container { flex-direction: column; }
-            .side-stripe { width: 100%; height: 15px; }
-            .content { padding: 20px; }
+            .container { padding: 20px 5%; }
+            .skill-item, .portfolio-item { flex: 1 1 calc(50% - 30px); }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="side-stripe"></div>
-        <div class="content">
+        <div class="header">
             <h1>Nome Completo</h1>
-            
+            <p>Desenvolvedor Full Stack | Designer Gráfico | Entusiasta em Tecnologia</p>
+        </div>
+
+        <div class="section" id="about">
             <h2>Sobre Mim</h2>
-            <p>Uma breve descrição profissional e pessoal que destaca suas principais características e objetivos.</p>
-            
+            <p>Sou um profissional dedicado com mais de 5 anos de experiência em desenvolvimento web e design. Apaixonado por criar soluções inovadoras e contribuir para projetos desafiadores.</p>
+        </div>
+
+        <div class="section" id="skills">
             <h2>Habilidades</h2>
-            <div class="skill-list">
-                <div class="skill-item">Programação</div>
-                <div class="skill-item">Design</div>
-                <div class="skill-item">Gestão de Projetos</div>
-            </div>
-            
-            <h2>Experiência Profissional</h2>
-            <p>Detalhes sobre sua trajetória profissional, principais realizações e empresas.</p>
-            
-            <div class="contact-info">
-                <h2>Contato</h2>
-                <p>Email: <a href="mailto:seuemail@exemplo.com">seuemail@exemplo.com</a></p>
-                <p>Telefone: (XX) XXXX-XXXX</p>
-                <p>LinkedIn: <a href="#">Seu perfil</a></p>
+            <div class="skills">
+                <div class="skill-item">HTML5</div>
+                <div class="skill-item">CSS3</div>
+                <div class="skill-item">JavaScript</div>
+                <div class="skill-item">React.js</div>
+                <div class="skill-item">Node.js</div>
+                <div class="skill-item">MySQL</div>
             </div>
         </div>
-        <div class="side-stripe"></div>
+
+        <div class="section" id="portfolio">
+            <h2>Portfólio</h2>
+            <div class="portfolio">
+                <div class="portfolio-item">Projeto 1</div>
+                <div class="portfolio-item">Projeto 2</div>
+                <div class="portfolio-item">Projeto 3</div>
+            </div>
+        </div>
+
+        <div class="section" id="experience">
+            <h2>Experiência Profissional</h2>
+            <p>Desenvolvedor Full Stack na Empresa X (2019 - Presente)</p>
+            <p>Designer Gráfico na Empresa Y (2017 - 2019)</p>
+        </div>
+
+        <div class="section" id="contact">
+            <h2>Contato</h2>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:seuemail@exemplo.com">seuemail@exemplo.com</a></p>
+                <p>Telefone: (XX) XXXX-XXXX</p>
+                <p>LinkedIn: <a href="#">Seu Perfil</a></p>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2024 Seu Nome. Todos os direitos reservados.
+        </div>
     </div>
+
+    <script>
+        // Efeito de rolagem para revelar as seções
+        document.addEventListener('scroll', () => {
+            document.querySelectorAll('.section').forEach((section) => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight - 100) {
+                    section.classList.add('visible');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
