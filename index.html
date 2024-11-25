@@ -2,105 +2,53 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo ao Meu Site</title>
+    <title>Meu Perfil</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #2c2c2c;
+            color: #f0f0f0;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            scroll-behavior: smooth;
+            min-height: 100vh;
         }
-        .container {
-            text-align: center;
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 50px 20px;
-            width: 80%;
+        .side-stripe {
+            width: 20px;
+            background-color: #4169E1;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 40px;
             max-width: 800px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 auto;
         }
-        .container:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
-        }
-        h1, h2 {
-            color: #333333;
-        }
-        p {
-            color: #666666;
-            line-height: 1.6;
-        }
-        section {
-            margin-bottom: 80px;
-        }
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s forwards;
-        }
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        /* Animação ao rolar */
-        .reveal {
-            position: relative;
-            opacity: 0;
-            transition: all 1s ease;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        @media (max-width: 600px) {
-            .container {
-                width: 100%;
-                padding: 20px;
-            }
+        h1 {
+            color: #ffffff;
+            border-bottom: 2px solid #4169E1;
+            padding-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="container fade-in">
-        <h1>Bem-vindo ao Meu Site!</h1>
-        <p>Obrigado por visitar! Este é um exemplo simples de uma página inicial com uma introdução de boas-vindas.</p>
-    </div>
-
-    <section class="container reveal">
-        <h2>Sobre Nós</h2>
-        <p>Nós somos uma equipe dedicada a fornecer conteúdo de qualidade e uma experiência incrível para nossos visitantes.</p>
-    </section>
-
-    <section class="container reveal">
-        <h2>Serviços</h2>
-        <p>Oferecemos uma ampla gama de serviços, incluindo desenvolvimento web, design gráfico, e consultoria em tecnologia.</p>
-    </section>
-
-    <section class="container reveal">
+    <div class="side-stripe"></div>
+    <div class="content">
+        <h1>Sobre Mim</h1>
+        <p>Aqui você pode adicionar informações pessoais, sua história, interesses, habilidades e objetivos.</p>
+        
+        <h2>Experiência</h2>
+        <p>Descreva sua experiência profissional ou acadêmica.</p>
+        
+        <h2>Habilidades</h2>
+        <ul>
+            <li>Habilidade 1</li>
+            <li>Habilidade 2</li>
+            <li>Habilidade 3</li>
+        </ul>
+        
         <h2>Contato</h2>
-        <p>Fale conosco através do nosso <a href="mailto:contato@exemplo.com">e-mail</a> ou siga-nos nas redes sociais!</p>
-    </section>
-
-    <script>
-        // Função para revelar seções ao rolar a página
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.reveal').forEach((section) => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (sectionTop < windowHeight - 50) {
-                    section.classList.add('active');
-                }
-            });
-        });
-    </script>
+        <p>Email: seuemail@exemplo.com</p>
+    </div>
+    <div class="side-stripe"></div>
 </body>
 </html>
