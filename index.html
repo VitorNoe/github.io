@@ -77,13 +77,28 @@
             text-align: center;
             flex: 1 1 calc(33.333% - 30px);
             min-width: 150px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            transform: scale(1);
+        }
+        .skill-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 15px var(--shadow-color);
+            background-color: white;
+            color: var(--blue-accent);
         }
         .contact-info a {
             color: var(--blue-accent);
             text-decoration: none;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
         }
         .contact-info a:hover {
+            background-color: var(--blue-accent);
             color: white;
+            transform: scale(1.1);
         }
         .footer {
             text-align: center;
@@ -99,7 +114,7 @@
     <div class="container">
         <div class="header">
             <h1>Vítor Luciano Cardoso Noé</h1>
-            <p>2º Grau completo |  Estudante de Técnico em Desenvolvimento de Sistemas | Certificação em Inglês Avançado</p>
+            <p>2º Grau completo | Estudante de Técnico em Desenvolvimento de Sistemas | Certificação em Inglês Avançado</p>
         </div>
 
         <div class="section" id="about">
