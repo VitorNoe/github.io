@@ -48,7 +48,7 @@
             margin-bottom: 30px;
             opacity: 0;
             transform: translateY(-30px);
-            animation: fadeInDown 1.5s ease forwards; /* Animação do nome */
+            animation: fadeInDown 1.5s ease forwards;
         }
         @keyframes fadeInDown {
             0% {
@@ -180,13 +180,13 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const delayBetweenSections = 500; // 500ms entre cada seção
             const sections = document.querySelectorAll('.section');
+            const delayBetweenSections = 500; // 500ms entre cada seção
 
             sections.forEach((section, index) => {
                 setTimeout(() => {
                     section.classList.add('visible');
-                }, delayBetweenSections * (index + 2)); // Atraso após o título
+                }, delayBetweenSections * (index + 1));
             });
         });
     </script>
