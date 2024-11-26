@@ -19,10 +19,23 @@
         }
         body {
             font-family: 'Arial', sans-serif;
-            background-color: var(--dark-gray);
+            background: linear-gradient(-45deg, #1e1e1e, #2c2c2c, #202020, #262626);
+            background-size: 400% 400%;
             color: var(--text-color);
             line-height: 1.8;
             overflow-x: hidden;
+            animation: gradientAnimation 15s ease infinite; /* Animação de fundo */
+        }
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
         .container {
             display: flex;
@@ -64,14 +77,11 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Efeito ao passar o mouse sobre as seções */
         .section:hover {
-            transform: scale(1.03); /* Cresce 3% */
-            box-shadow: 0 8px 20px rgba(65, 105, 225, 0.6); /* Brilho nas bordas */
-            border: 2px solid var(--blue-accent); /* Borda iluminada */
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(65, 105, 225, 0.6);
+            border: 2px solid var(--blue-accent);
         }
-
         .skills, .portfolio {
             display: flex;
             flex-wrap: wrap;
