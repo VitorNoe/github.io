@@ -176,4 +176,51 @@
 
         <div class="section" id="about">
             <h2>Sobre Mim</h2>
-            <p>Meu nome é Vítor Luciano Cardoso Noé, nasci em 7 de julho de 2005. Concluí o ensino médio em 2023 e finalizei o curso de inglês avançado no CNA após 9 anos de estudos. Atualmente, estou cursando Técnico em Desenvolvimento de Sistemas Bilí
+            <p>Meu nome é Vítor Luciano Cardoso Noé, nasci em 7 de julho de 2005. Concluí o ensino médio em 2023 e finalizei o curso de inglês avançado no CNA após 9 anos de estudos. Atualmente, estou cursando Técnico em Desenvolvimento de Sistemas Bilíngue no SenacRS.</p>
+            <p>Estou em busca de uma oportunidade como estagiário, com o objetivo de aplicar e expandir meus conhecimentos na área de tecnologia e desenvolvimento de sistemas.</p>
+        </div>
+
+        <div class="section" id="education">
+            <h2>Formação Acadêmica</h2>
+            <p><strong>Ensino Médio Completo:</strong> Concluído em 2023.</p>
+            <p><strong>Curso Técnico:</strong> Desenvolvimento de Sistemas Bilíngue - SenacRS (Em andamento).</p>
+            <p><strong>Inglês Avançado:</strong> Certificado pelo CNA após 9 anos de curso.</p>
+        </div>
+
+        <div class="section" id="skills">
+            <h2>Habilidades</h2>
+            <div class="skills">
+                <div class="skill-item">Desenvolvimento Web</div>
+                <div class="skill-item">Banco de Dados MySQL</div>
+                <div class="skill-item">Inglês Avançado</div>
+                <div class="skill-item">Comunicação Bilíngue</div>
+            </div>
+        </div>
+
+        <div class="section" id="contact">
+            <h2>Contato</h2>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:vitorcardosonoe@gmail.com">vitorcardosonoe@gmail.com</a></p>
+                <p>Telefone: <a href="tel:+5551981172070">(51) 98117-2070</a></p>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2024 Vítor Luciano Cardoso Noé. Todos os direitos reservados.
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+            const delayBetweenSections = 500; // 500ms entre cada seção
+
+            sections.forEach((section, index) => {
+                setTimeout(() => {
+                    section.classList.add('visible');
+                }, delayBetweenSections * (index + 1));
+            });
+        });
+    </script>
+</body>
+</html>
