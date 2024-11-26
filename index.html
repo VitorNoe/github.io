@@ -24,7 +24,7 @@
             color: var(--text-color);
             line-height: 1.8;
             overflow-x: hidden;
-            animation: gradientAnimation 15s ease infinite; /* Animação de fundo */
+            animation: gradientAnimation 15s ease infinite;
         }
         @keyframes gradientAnimation {
             0% {
@@ -46,6 +46,19 @@
         .header {
             text-align: center;
             margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: fadeInDown 1.5s ease forwards; /* Animação do nome */
+        }
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         h1, h2 {
             color: var(--blue-accent);
@@ -71,16 +84,11 @@
             width: 100%;
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 1s, transform 1s, transform 0.3s ease, box-shadow 0.3s ease;
+            transition: opacity 1s ease, transform 1s ease;
         }
         .section.visible {
             opacity: 1;
             transform: translateY(0);
-        }
-        .section:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 20px rgba(65, 105, 225, 0.6);
-            border: 2px solid var(--blue-accent);
         }
         .skills, .portfolio {
             display: flex;
@@ -97,7 +105,6 @@
             min-width: 150px;
             cursor: pointer;
             box-shadow: 0 4px 8px var(--shadow-color);
-            transform: scale(1);
         }
         .skill-item:hover {
             transform: scale(1.1);
@@ -172,14 +179,14 @@
     </div>
 
     <script>
-        // Efeito de rolagem para revelar as seções
-        document.addEventListener('scroll', () => {
-            document.querySelectorAll('.section').forEach((section) => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (sectionTop < windowHeight - 100) {
+        document.addEventListener('DOMContentLoaded', () => {
+            const delayBetweenSections = 500; // 500ms entre cada seção
+            const sections = document.querySelectorAll('.section');
+
+            sections.forEach((section, index) => {
+                setTimeout(() => {
                     section.classList.add('visible');
-                }
+                }, delayBetweenSections * (index + 2)); // Atraso após o título
             });
         });
     </script>
