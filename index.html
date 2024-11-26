@@ -58,12 +58,20 @@
             width: 100%;
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 1s, transform 1s;
+            transition: opacity 1s, transform 1s, transform 0.3s ease, box-shadow 0.3s ease;
         }
         .section.visible {
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Efeito ao passar o mouse sobre as seções */
+        .section:hover {
+            transform: scale(1.03); /* Cresce 3% */
+            box-shadow: 0 8px 20px rgba(65, 105, 225, 0.6); /* Brilho nas bordas */
+            border: 2px solid var(--blue-accent); /* Borda iluminada */
+        }
+
         .skills, .portfolio {
             display: flex;
             flex-wrap: wrap;
