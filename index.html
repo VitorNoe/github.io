@@ -92,36 +92,10 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Remover qualquer animação pulsante */
         .section:hover {
             transform: scale(1.05);
             box-shadow: 0 0 20px 5px rgba(65, 105, 225, 0.6);
-        }
-        /* Remover a animação azul dentro das tabelas */
-        .section:hover::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(65, 105, 225, 0.6);
-            animation: pulse 1.5s infinite;
-            transform: translate(-50%, -50%);
-        }
-        @keyframes pulse {
-            0% {
-                width: 0;
-                height: 0;
-            }
-            50% {
-                width: 120%;
-                height: 120%;
-            }
-            100% {
-                width: 0;
-                height: 0;
-            }
         }
         .skills, .portfolio {
             display: flex;
