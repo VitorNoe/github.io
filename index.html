@@ -88,32 +88,14 @@
             position: relative;
             overflow: hidden;
         }
-
-        /* Nova regra para expandir a linha azul ao passar o mouse */
-        .section::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            width: 50px;
-            height: 4px;
-            background-color: var(--blue-accent);
-            transform: translateX(-50%);
-            transition: width 0.3s ease;  /* Transição suave para a largura */
-        }
-        .section:hover::after {
-            width: 80%;  /* Expande a linha azul */
-        }
-
-        /* Mantém o efeito de escala ao passar o mouse */
-        .section:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px 5px rgba(65, 105, 225, 0.6);
-        }
-        
         .section.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+        /* Remover qualquer animação pulsante */
+        .section:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px 5px rgba(65, 105, 225, 0.6);
         }
         .skills, .portfolio {
             display: flex;
