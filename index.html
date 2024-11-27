@@ -15,6 +15,15 @@
             --text-color: #f0f0f0;
             --shadow-color: rgba(0, 0, 0, 0.4);
         }
+
+        /* Tema claro */
+        body.light-mode {
+            --dark-gray: #ffffff;
+            --light-gray: #f0f0f0;
+            --text-color: #333333;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -23,56 +32,38 @@
         }
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(-45deg, #1e1e1e, #2c2c2c, #202020, #262626);
+            background: linear-gradient(-45deg, var(--dark-gray), var(--light-gray));
             background-size: 400% 400%;
             color: var(--text-color);
             line-height: 1.8;
             overflow-x: hidden;
             animation: gradientAnimation 15s ease infinite;
         }
+
         @keyframes gradientAnimation {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 30px 10%;
         }
+
         .header {
             text-align: center;
             margin-bottom: 30px;
-            opacity: 0;
-            transform: translateY(-50px);
-            animation: fadeInDown 1.5s ease forwards;
         }
-        @keyframes fadeInDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+
         h1, h2 {
             color: var(--blue-accent);
             margin-bottom: 20px;
             position: relative;
         }
-        h1::after, h2::after {
-            content: '';
-            width: 50px;
-            height: 4px;
-            background-color: var(--blue-accent);
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+
         .section {
             background-color: var(--light-gray);
             padding: 30px;
@@ -80,74 +71,36 @@
             box-shadow: 0 5px 15px var(--shadow-color);
             margin-bottom: 30px;
             width: 100%;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease, transform 1s ease;
-            position: relative;
-            overflow: hidden;
         }
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .section:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px 5px rgba(65, 105, 225, 0.6);
-        }
-        .skills, .portfolio {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .skill-item {
+
+        /* Botão para alternar o tema */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
             background-color: var(--blue-accent);
             color: white;
-            padding: 10px 15px;
-            border-radius: 20px;
-            text-align: center;
-            flex: 1 1 calc(33.333% - 30px);
-            min-width: 150px;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             box-shadow: 0 4px 8px var(--shadow-color);
+            transition: background-color 0.3s ease;
         }
-        .skill-item:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 15px var(--shadow-color);
+        .theme-toggle:hover {
             background-color: white;
             color: var(--blue-accent);
-        }
-        .contact-info a {
-            color: var(--blue-accent);
-            text-decoration: none;
-            display: inline-block;
-            padding: 10px;
-            border-radius: 10px;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-        }
-        .contact-info a:hover {
-            background-color: var(--blue-accent);
-            color: white;
-            transform: scale(1.1);
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            background-color: var(--light-gray);
-            border-radius: 10px;
-            box-shadow: 0 5px 10px var(--shadow-color);
-        }
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px 5%;
-            }
-            .skills {
-                flex-direction: column;
-            }
         }
     </style>
 </head>
 <body>
+    <button class="theme-toggle" onclick="toggleTheme()">☀️</button>
+
     <div class="container">
         <div class="header">
             <h1 aria-label="Nome completo: Vítor Luciano Cardoso Noé">Vítor Luciano Cardoso Noé</h1>
@@ -191,16 +144,15 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section');
-            const delayBetweenSections = 500; // 500ms entre cada seção
-
-            sections.forEach((section, index) => {
-                setTimeout(() => {
-                    section.classList.add('visible');
-                }, delayBetweenSections * (index + 1));
-            });
-        });
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const themeButton = document.querySelector('.theme-toggle');
+            if (document.body.classList.contains('light-mode')) {
+                themeButton.textContent = '🌙'; // Muda ícone para lua no modo claro
+            } else {
+                themeButton.textContent = '☀️'; // Muda ícone para sol no modo escuro
+            }
+        }
     </script>
 </body>
 </html>
