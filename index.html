@@ -2,6 +2,10 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Currículo online de Vítor Luciano Cardoso Noé, desenvolvedor de sistemas bilíngue e com certificado de inglês avançado.">
+    <meta name="keywords" content="Vítor Luciano Cardoso Noé, Desenvolvedor, Técnico em Desenvolvimento de Sistemas, Inglês Avançado">
+    <meta name="author" content="Vítor Luciano Cardoso Noé">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currículo de Vítor Luciano Cardoso Noé</title>
     <style>
         :root {
@@ -27,15 +31,9 @@
             animation: gradientAnimation 15s ease infinite;
         }
         @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .container {
             display: flex;
@@ -47,13 +45,13 @@
             text-align: center;
             margin-bottom: 30px;
             opacity: 0;
-            transform: translateY(-30px);
+            transform: translateY(-50px);
             animation: fadeInDown 1.5s ease forwards;
         }
         @keyframes fadeInDown {
             0% {
                 opacity: 0;
-                transform: translateY(-30px);
+                transform: translateY(-50px);
             }
             100% {
                 opacity: 1;
@@ -92,7 +90,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Remover qualquer animação pulsante */
         .section:hover {
             transform: scale(1.05);
             box-shadow: 0 0 20px 5px rgba(65, 105, 225, 0.6);
@@ -140,12 +137,20 @@
             border-radius: 10px;
             box-shadow: 0 5px 10px var(--shadow-color);
         }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 5%;
+            }
+            .skills {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Vítor Luciano Cardoso Noé</h1>
+            <h1 aria-label="Nome completo: Vítor Luciano Cardoso Noé">Vítor Luciano Cardoso Noé</h1>
             <p>2º Grau completo | Estudante de Técnico em Desenvolvimento de Sistemas | Certificação em Inglês Avançado</p>
         </div>
 
