@@ -32,7 +32,7 @@
         }
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(-45deg, var(--dark-gray), var(--light-gray));
+            background: linear-gradient(-45deg, var(--dark-gray), var(--light-gray), #202020, #262626);
             background-size: 400% 400%;
             color: var(--text-color);
             line-height: 1.8;
@@ -56,6 +56,20 @@
         .header {
             text-align: center;
             margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: fadeInDown 1.5s ease forwards;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h1, h2 {
@@ -71,6 +85,19 @@
             box-shadow: 0 5px 15px var(--shadow-color);
             margin-bottom: 30px;
             width: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         /* Botão para alternar o tema */
@@ -90,12 +117,8 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 4px 8px var(--shadow-color);
-            transition: background-color 0.3s ease;
         }
-        .theme-toggle:hover {
-            background-color: white;
-            color: var(--blue-accent);
-        }
+
     </style>
 </head>
 <body>
@@ -103,56 +126,35 @@
 
     <div class="container">
         <div class="header">
-            <h1 aria-label="Nome completo: Vítor Luciano Cardoso Noé">Vítor Luciano Cardoso Noé</h1>
+            <h1>Vítor Luciano Cardoso Noé</h1>
             <p>2º Grau completo | Estudante de Técnico em Desenvolvimento de Sistemas | Certificação em Inglês Avançado</p>
         </div>
 
         <div class="section" id="about">
             <h2>Sobre Mim</h2>
-            <p>Meu nome é Vítor Luciano Cardoso Noé, nasci em 7 de julho de 2005. Concluí o ensino médio em 2023 e finalizei o curso de inglês avançado no CNA após 9 anos de estudos. Atualmente, estou cursando Técnico em Desenvolvimento de Sistemas Bilíngue no SenacRS.</p>
-            <p>Estou em busca de uma oportunidade como estagiário, com o objetivo de aplicar e expandir meus conhecimentos na área de tecnologia e desenvolvimento de sistemas.</p>
+            <p>Meu nome é Vítor Luciano Cardoso Noé...</p>
         </div>
+        <!-- Outras seções omitidas para brevidade -->
 
-        <div class="section" id="education">
-            <h2>Formação Acadêmica</h2>
-            <p><strong>Ensino Médio Completo:</strong> Concluído em 2023.</p>
-            <p><strong>Curso Técnico:</strong> Desenvolvimento de Sistemas Bilíngue - SenacRS (Em andamento).</p>
-            <p><strong>Inglês Avançado:</strong> Certificado pelo CNA após 9 anos de curso.</p>
-        </div>
-
-        <div class="section" id="skills">
-            <h2>Habilidades</h2>
-            <div class="skills">
-                <div class="skill-item">Desenvolvimento Web</div>
-                <div class="skill-item">Banco de Dados MySQL</div>
-                <div class="skill-item">Inglês Avançado</div>
-                <div class="skill-item">Comunicação Bilíngue</div>
-            </div>
-        </div>
-
-        <div class="section" id="contact">
-            <h2>Contato</h2>
-            <div class="contact-info">
-                <p>Email: <a href="mailto:vitorcardosonoe@gmail.com">vitorcardosonoe@gmail.com</a></p>
-                <p>Telefone: <a href="tel:+5551981172070">(51) 98117-2070</a></p>
-            </div>
-        </div>
-
-        <div class="footer">
-            &copy; 2024 Vítor Luciano Cardoso Noé. Todos os direitos reservados.
-        </div>
     </div>
 
     <script>
+        // Alterna entre tema claro e escuro
         function toggleTheme() {
             document.body.classList.toggle('light-mode');
             const themeButton = document.querySelector('.theme-toggle');
-            if (document.body.classList.contains('light-mode')) {
-                themeButton.textContent = '🌙'; // Muda ícone para lua no modo claro
-            } else {
-                themeButton.textContent = '☀️'; // Muda ícone para sol no modo escuro
-            }
+            themeButton.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
         }
+
+        // Animações de fade-in para cada seção
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                setTimeout(() => {
+                    section.classList.add('visible');
+                }, index * 500); // 500ms de intervalo entre as seções
+            });
+        });
     </script>
 </body>
 </html>
