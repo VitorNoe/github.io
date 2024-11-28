@@ -23,18 +23,25 @@
         }
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(-45deg, #483D8B, #2c2c2c, #483D8B, #262626);
+            background: linear-gradient(135deg, 
+                rgba(169, 169, 169, 0.8) 25%, 
+                rgba(192, 192, 192, 0.8) 50%, 
+                rgba(169, 169, 169, 0.8) 75%);
             background-size: 400% 400%;
             color: var(--text-color);
             line-height: 1.8;
             overflow-x: hidden;
-            animation: gradientAnimation 15s ease infinite;
+            animation: metallicEffect 5s ease infinite;
         }
-        @keyframes gradientAnimation {
+        
+        @keyframes metallicEffect {
             0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 0% 50%; }
+            75% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
         .container {
             display: flex;
             flex-direction: column;
