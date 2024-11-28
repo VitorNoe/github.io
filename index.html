@@ -118,6 +118,17 @@
             box-shadow: 0 0 20px 5px rgba(65, 105, 225, 0.6);
         }
 
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .skills-table td, .skills-table th {
+            padding: 15px;
+            border: 1px solid var(--blue-accent);
+            text-align: center;
+        }
+
         .skills, .portfolio {
             display: flex;
             flex-wrap: wrap;
@@ -182,39 +193,43 @@
             transition: all 0.3s ease;
         }
 
-        .theme-toggle:hover {
-            background-color: white;
-            color: var(--blue-accent);
-            transform: scale(1.1);
-        }
-
-        .layout-toggle {
+        .toggle-menu {
             position: fixed;
             top: 20px;
-            left: 80px;
+            left: 20px;
             background-color: var(--blue-accent);
             color: white;
-            padding: 10px;
-            border-radius: 50%;
+            padding: 20px;
+            border-radius: 10px;
             cursor: pointer;
             box-shadow: 0 4px 8px var(--shadow-color);
             transition: all 0.3s ease;
         }
 
-        .layout-toggle:hover {
-            background-color: white;
-            color: var(--blue-accent);
-            transform: scale(1.1);
+        .toggle-options {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            background-color: var(--blue-accent);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--shadow-color);
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px 5%;
-            }
+        .toggle-options button {
+            background: none;
+            color: white;
+            padding: 10px;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
 
-            .skills {
-                flex-direction: column;
-            }
+        .toggle-options button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         .light-theme {
@@ -227,23 +242,16 @@
     </style>
 </head>
 <body>
-    <div class="theme-toggle" id="theme-toggle">&#x2192;</div>
-    <div class="layout-toggle" id="layout-toggle">&#x21d1;</div>
+    <div class="toggle-menu" id="toggle-menu">☰</div>
+    <div class="toggle-options" id="toggle-options">
+        <button id="theme-toggle">Alterar Tema</button>
+        <button id="layout-toggle">Alterar Layout</button>
+    </div>
 
     <div class="container">
         <div class="header">
             <h1>Vítor Luciano Cardoso Noé</h1>
-            <p>2º Grau completo | Estudante de Técnico em Desenvolvimento de Sistemas | Certificação em Inglês Avançado</p>
-        </div>
-
-        <div class="section" id="about">
-            <h2>Sobre Mim</h2>
-            <p>Meu nome é Vítor Luciano Cardoso Noé, nasci em 7 de julho de 2005...</p>
-        </div>
-
-        <div class="section" id="education">
-            <h2>Formação Acadêmica</h2>
-            <p><strong>Ensino Médio Completo:</strong> Concluído em 2023.</p>
+            <p>2º Grau completo | Estudante de Técnico em Desenvolvimento de Sistemas Bilíngue</p>
         </div>
 
         <div class="section" id="skills">
@@ -274,16 +282,22 @@
             const layoutToggle = document.getElementById('layout-toggle');
             const body = document.body;
             const skillsSection = document.querySelector('.skills');
+            const toggleMenu = document.getElementById('toggle-menu');
+            const toggleOptions = document.getElementById('toggle-options');
 
             // Alternar tema claro/escuro
             themeToggle.addEventListener('click', () => {
                 body.classList.toggle('light-theme');
-                themeToggle.innerHTML = body.classList.contains('light-theme') ? '&#x2190;' : '&#x2192;';
             });
 
             // Alternar layout de habilidades
             layoutToggle.addEventListener('click', () => {
                 skillsSection.classList.toggle('column-layout');
+            });
+
+            // Mostrar/ocultar as opções
+            toggleMenu.addEventListener('click', () => {
+                toggleOptions.classList.toggle('visible');
             });
         });
     </script>
