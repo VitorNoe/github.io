@@ -14,17 +14,13 @@
             --light-gray: #2c2c2c;
             --text-color: #f0f0f0;
             --shadow-color: rgba(0, 0, 0, 0.4);
-            --background-light: #f5f5f5; /* Cor de fundo para o modo claro */
-            --text-color-light: #333; /* Cor de texto para o modo claro */
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             transition: all 0.3s ease;
         }
-
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, 
@@ -35,7 +31,7 @@
             color: var(--text-color);
             line-height: 1.8;
             overflow-x: hidden;
-            animation: metallicEffect 15s ease infinite;
+            animation: metallicEffect 15s ease infinite; /* Transição mais lenta */
         }
 
         @keyframes metallicEffect {
@@ -44,13 +40,13 @@
             100% { background-position: 0% 50%; }
         }
 
+
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 30px 10%;
         }
-
         .header {
             text-align: center;
             margin-bottom: 30px;
@@ -58,7 +54,6 @@
             transform: translateY(-50px);
             animation: fadeInDown 1.5s ease forwards;
         }
-
         @keyframes fadeInDown {
             0% {
                 opacity: 0;
@@ -69,14 +64,12 @@
                 transform: translateY(0);
             }
         }
-
         h1, h2 {
             color: var(--blue-accent);
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
         }
-
         h1::after, h2::after {
             content: '';
             width: 50px;
@@ -88,12 +81,10 @@
             transform: translateX(-50%);
             transition: width 0.3s ease, margin-bottom 0.3s ease;
         }
-
         h1:hover::after, h2:hover::after {
             width: 100%;
-            margin-bottom: 10px;
+            margin-bottom: 10px; /* Cria um espaçamento entre o título e a descrição */
         }
-
         .section {
             background-color: var(--light-gray);
             padding: 30px;
@@ -107,35 +98,19 @@
             position: relative;
             overflow: hidden;
         }
-
         .section.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
         .section:hover {
             transform: scale(1.05);
             box-shadow: 0 0 20px 5px rgba(65, 105, 225, 0.6);
         }
-
-        .skills-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .skills-table td, .skills-table th {
-            padding: 15px;
-            border: 1px solid var(--blue-accent);
-            text-align: center;
-        }
-
         .skills, .portfolio {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
-            transition: flex-direction 0.3s ease;
         }
-
         .skill-item {
             background-color: var(--blue-accent);
             color: white;
@@ -146,16 +121,13 @@
             min-width: 150px;
             cursor: pointer;
             box-shadow: 0 4px 8px var(--shadow-color);
-            transition: all 0.3s ease;
         }
-
         .skill-item:hover {
             transform: scale(1.1);
             box-shadow: 0 8px 15px var(--shadow-color);
             background-color: white;
             color: var(--blue-accent);
         }
-
         .contact-info a {
             color: var(--blue-accent);
             text-decoration: none;
@@ -164,13 +136,11 @@
             border-radius: 10px;
             transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
         }
-
         .contact-info a:hover {
             background-color: var(--blue-accent);
             color: white;
             transform: scale(1.1);
         }
-
         .footer {
             text-align: center;
             padding: 20px;
@@ -179,106 +149,43 @@
             border-radius: 10px;
             box-shadow: 0 5px 10px var(--shadow-color);
         }
-
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background-color: var(--blue-accent);
-            color: white;
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 4px 8px var(--shadow-color);
-            transition: all 0.3s ease;
-        }
-
-        .toggle-menu {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background-color: var(--blue-accent);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            box-shadow: 0 4px 8px var(--shadow-color);
-            transition: all 0.3s ease;
-        }
-
-        .toggle-options {
-            display: none;
-            flex-direction: column;
-            position: absolute;
-            top: 50px;
-            left: 0;
-            background-color: var(--blue-accent);
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px var(--shadow-color);
-        }
-
-        .toggle-options button {
-            background: none;
-            color: white;
-            padding: 10px;
-            border: none;
-            text-align: left;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .toggle-options button:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .light-theme {
-            --dark-gray: #f5f5f5;
-            --blue-accent: #4169E1;
-            --light-gray: #ffffff;
-            --text-color: #333;
-            --shadow-color: rgba(0, 0, 0, 0.2);
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 5%;
+            }
+            .skills {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="toggle-menu" id="toggle-menu">☰</div>
-    <div class="toggle-options" id="toggle-options">
-        <button id="theme-toggle">Alterar Tema</button>
-        <button id="layout-toggle">Alterar Layout</button>
-    </div>
-
     <div class="container">
         <div class="header">
-            <h1>Vítor Luciano Cardoso Noé</h1>
-            <p>2º Grau completo | Estudante de Técnico em Desenvolvimento de Sistemas Bilíngue</p>
+            <h1 aria-label="Nome completo: Vítor Luciano Cardoso Noé">Vítor Luciano Cardoso Noé</h1>
+            <p>2º Grau completo | Estudante de Técnico em Desenvolvimento de Sistemas | Certificação em Inglês Avançado</p>
+        </div>
+
+        <div class="section" id="about">
+            <h2>Sobre Mim</h2>
+            <p>Meu nome é Vítor Luciano Cardoso Noé, nasci em 7 de julho de 2005. Concluí o ensino médio em 2023 e finalizei o curso de inglês avançado no CNA após 9 anos de estudos. Atualmente, estou cursando Técnico em Desenvolvimento de Sistemas Bilíngue no SenacRS.</p>
+            <p>Estou em busca de uma oportunidade como estagiário, com o objetivo de aplicar e expandir meus conhecimentos na área de tecnologia e desenvolvimento de sistemas.</p>
+        </div>
+
+        <div class="section" id="education">
+            <h2>Formação Acadêmica</h2>
+            <p><strong>Ensino Médio Completo:</strong> Concluído em 2023.</p>
+            <p><strong>Curso Técnico:</strong> Desenvolvimento de Sistemas Bilíngue - SenacRS (Em andamento).</p>
+            <p><strong>Inglês Avançado:</strong> Certificado pelo CNA após 9 anos de curso.</p>
         </div>
 
         <div class="section" id="skills">
             <h2>Habilidades</h2>
-            <div class="skills-table">
-                <table id="skills-table">
-                    <tr>
-                        <th>Habilidade</th>
-                        <th>Descrição</th>
-                    </tr>
-                    <tr>
-                        <td>Desenvolvimento Web</td>
-                        <td>Criação de websites com HTML, CSS e JavaScript</td>
-                    </tr>
-                    <tr>
-                        <td>Banco de Dados MySQL</td>
-                        <td>Gestão e manipulação de bancos de dados relacionais</td>
-                    </tr>
-                    <tr>
-                        <td>Inglês Avançado</td>
-                        <td>Certificado de inglês avançado pelo CNA</td>
-                    </tr>
-                    <tr>
-                        <td>Comunicação Bilíngue</td>
-                        <td>Facilidade de comunicação em português e inglês</td>
-                    </tr>
-                </table>
+            <div class="skills">
+                <div class="skill-item">Desenvolvimento Web</div>
+                <div class="skill-item">Banco de Dados MySQL</div>
+                <div class="skill-item">Inglês Avançado</div>
+                <div class="skill-item">Comunicação Bilíngue</div>
             </div>
         </div>
 
@@ -286,6 +193,7 @@
             <h2>Contato</h2>
             <div class="contact-info">
                 <p>Email: <a href="mailto:vitorcardosonoe@gmail.com">vitorcardosonoe@gmail.com</a></p>
+                <p>Telefone: <a href="tel:+5551981172070">(51) 98117-2070</a></p>
             </div>
         </div>
 
@@ -296,35 +204,13 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const themeToggle = document.getElementById('theme-toggle');
-            const layoutToggle = document.getElementById('layout-toggle');
-            const body = document.body;
-            const skillsSection = document.getElementById('skills-table');
-            const toggleMenu = document.getElementById('toggle-menu');
-            const toggleOptions = document.getElementById('toggle-options');
+            const sections = document.querySelectorAll('.section');
+            const delayBetweenSections = 500; // 500ms entre cada seção
 
-            // Iniciar com tema escuro e layout de tabela
-            body.classList.add('dark-theme');
-
-            // Alternar tema claro/escuro
-            themeToggle.addEventListener('click', () => {
-                body.classList.toggle('light-theme');
-            });
-
-            // Alternar layout de habilidades
-            layoutToggle.addEventListener('click', () => {
-                if (skillsSection.classList.contains('skills-table')) {
-                    skillsSection.classList.remove('skills-table');
-                    skillsSection.classList.add('skills');
-                } else {
-                    skillsSection.classList.remove('skills');
-                    skillsSection.classList.add('skills-table');
-                }
-            });
-
-            // Mostrar/ocultar as opções
-            toggleMenu.addEventListener('click', () => {
-                toggleOptions.classList.toggle('visible');
+            sections.forEach((section, index) => {
+                setTimeout(() => {
+                    section.classList.add('visible');
+                }, delayBetweenSections * (index + 1));
             });
         });
     </script>
