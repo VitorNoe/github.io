@@ -257,7 +257,7 @@
         <div class="section" id="skills">
             <h2>Habilidades</h2>
             <div class="skills-table">
-                <table>
+                <table id="skills-table">
                     <tr>
                         <th>Habilidade</th>
                         <th>Descrição</th>
@@ -299,7 +299,7 @@
             const themeToggle = document.getElementById('theme-toggle');
             const layoutToggle = document.getElementById('layout-toggle');
             const body = document.body;
-            const skillsSection = document.querySelector('.skills-table');
+            const skillsSection = document.getElementById('skills-table');
             const toggleMenu = document.getElementById('toggle-menu');
             const toggleOptions = document.getElementById('toggle-options');
 
@@ -313,8 +313,13 @@
 
             // Alternar layout de habilidades
             layoutToggle.addEventListener('click', () => {
-                skillsSection.classList.toggle('skills');
-                skillsSection.classList.toggle('skills-table');
+                if (skillsSection.classList.contains('skills-table')) {
+                    skillsSection.classList.remove('skills-table');
+                    skillsSection.classList.add('skills');
+                } else {
+                    skillsSection.classList.remove('skills');
+                    skillsSection.classList.add('skills-table');
+                }
             });
 
             // Mostrar/ocultar as opções
