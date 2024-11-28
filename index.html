@@ -256,11 +256,29 @@
 
         <div class="section" id="skills">
             <h2>Habilidades</h2>
-            <div class="skills">
-                <div class="skill-item">Desenvolvimento Web</div>
-                <div class="skill-item">Banco de Dados MySQL</div>
-                <div class="skill-item">Inglês Avançado</div>
-                <div class="skill-item">Comunicação Bilíngue</div>
+            <div class="skills-table">
+                <table>
+                    <tr>
+                        <th>Habilidade</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td>Desenvolvimento Web</td>
+                        <td>Criação de websites com HTML, CSS e JavaScript</td>
+                    </tr>
+                    <tr>
+                        <td>Banco de Dados MySQL</td>
+                        <td>Gestão e manipulação de bancos de dados relacionais</td>
+                    </tr>
+                    <tr>
+                        <td>Inglês Avançado</td>
+                        <td>Certificado de inglês avançado pelo CNA</td>
+                    </tr>
+                    <tr>
+                        <td>Comunicação Bilíngue</td>
+                        <td>Facilidade de comunicação em português e inglês</td>
+                    </tr>
+                </table>
             </div>
         </div>
 
@@ -281,9 +299,12 @@
             const themeToggle = document.getElementById('theme-toggle');
             const layoutToggle = document.getElementById('layout-toggle');
             const body = document.body;
-            const skillsSection = document.querySelector('.skills');
+            const skillsSection = document.querySelector('.skills-table');
             const toggleMenu = document.getElementById('toggle-menu');
             const toggleOptions = document.getElementById('toggle-options');
+
+            // Iniciar com tema escuro e layout de tabela
+            body.classList.add('dark-theme');
 
             // Alternar tema claro/escuro
             themeToggle.addEventListener('click', () => {
@@ -292,7 +313,8 @@
 
             // Alternar layout de habilidades
             layoutToggle.addEventListener('click', () => {
-                skillsSection.classList.toggle('column-layout');
+                skillsSection.classList.toggle('skills');
+                skillsSection.classList.toggle('skills-table');
             });
 
             // Mostrar/ocultar as opções
