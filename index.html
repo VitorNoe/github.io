@@ -14,13 +14,17 @@
             --light-gray: #2c2c2c;
             --text-color: #f0f0f0;
             --shadow-color: rgba(0, 0, 0, 0.4);
+            --background-light: #f5f5f5; /* Cor de fundo para o modo claro */
+            --text-color-light: #333; /* Cor de texto para o modo claro */
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             transition: all 0.3s ease;
         }
+
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, 
@@ -31,7 +35,7 @@
             color: var(--text-color);
             line-height: 1.8;
             overflow-x: hidden;
-            animation: metallicEffect 15s ease infinite; /* Transição mais lenta */
+            animation: metallicEffect 15s ease infinite;
         }
 
         @keyframes metallicEffect {
@@ -40,13 +44,13 @@
             100% { background-position: 0% 50%; }
         }
 
-
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 30px 10%;
         }
+
         .header {
             text-align: center;
             margin-bottom: 30px;
@@ -54,6 +58,7 @@
             transform: translateY(-50px);
             animation: fadeInDown 1.5s ease forwards;
         }
+
         @keyframes fadeInDown {
             0% {
                 opacity: 0;
@@ -64,12 +69,14 @@
                 transform: translateY(0);
             }
         }
+
         h1, h2 {
             color: var(--blue-accent);
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
         }
+
         h1::after, h2::after {
             content: '';
             width: 50px;
@@ -81,10 +88,12 @@
             transform: translateX(-50%);
             transition: width 0.3s ease, margin-bottom 0.3s ease;
         }
+
         h1:hover::after, h2:hover::after {
             width: 100%;
-            margin-bottom: 10px; /* Cria um espaçamento entre o título e a descrição */
+            margin-bottom: 10px;
         }
+
         .section {
             background-color: var(--light-gray);
             padding: 30px;
@@ -98,19 +107,24 @@
             position: relative;
             overflow: hidden;
         }
+
         .section.visible {
             opacity: 1;
             transform: translateY(0);
         }
+
         .section:hover {
             transform: scale(1.05);
             box-shadow: 0 0 20px 5px rgba(65, 105, 225, 0.6);
         }
+
         .skills, .portfolio {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
+            transition: flex-direction 0.3s ease;
         }
+
         .skill-item {
             background-color: var(--blue-accent);
             color: white;
@@ -121,13 +135,16 @@
             min-width: 150px;
             cursor: pointer;
             box-shadow: 0 4px 8px var(--shadow-color);
+            transition: all 0.3s ease;
         }
+
         .skill-item:hover {
             transform: scale(1.1);
             box-shadow: 0 8px 15px var(--shadow-color);
             background-color: white;
             color: var(--blue-accent);
         }
+
         .contact-info a {
             color: var(--blue-accent);
             text-decoration: none;
@@ -136,11 +153,13 @@
             border-radius: 10px;
             transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
         }
+
         .contact-info a:hover {
             background-color: var(--blue-accent);
             color: white;
             transform: scale(1.1);
         }
+
         .footer {
             text-align: center;
             padding: 20px;
@@ -149,34 +168,82 @@
             border-radius: 10px;
             box-shadow: 0 5px 10px var(--shadow-color);
         }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: var(--blue-accent);
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: white;
+            color: var(--blue-accent);
+            transform: scale(1.1);
+        }
+
+        .layout-toggle {
+            position: fixed;
+            top: 20px;
+            left: 80px;
+            background-color: var(--blue-accent);
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+
+        .layout-toggle:hover {
+            background-color: white;
+            color: var(--blue-accent);
+            transform: scale(1.1);
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 20px 5%;
             }
+
             .skills {
                 flex-direction: column;
             }
         }
+
+        .light-theme {
+            --dark-gray: #f5f5f5;
+            --blue-accent: #4169E1;
+            --light-gray: #ffffff;
+            --text-color: #333;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
+    <div class="theme-toggle" id="theme-toggle">&#x2192;</div>
+    <div class="layout-toggle" id="layout-toggle">&#x21d1;</div>
+
     <div class="container">
         <div class="header">
-            <h1 aria-label="Nome completo: Vítor Luciano Cardoso Noé">Vítor Luciano Cardoso Noé</h1>
+            <h1>Vítor Luciano Cardoso Noé</h1>
             <p>2º Grau completo | Estudante de Técnico em Desenvolvimento de Sistemas | Certificação em Inglês Avançado</p>
         </div>
 
         <div class="section" id="about">
             <h2>Sobre Mim</h2>
-            <p>Meu nome é Vítor Luciano Cardoso Noé, nasci em 7 de julho de 2005. Concluí o ensino médio em 2023 e finalizei o curso de inglês avançado no CNA após 9 anos de estudos. Atualmente, estou cursando Técnico em Desenvolvimento de Sistemas Bilíngue no SenacRS.</p>
-            <p>Estou em busca de uma oportunidade como estagiário, com o objetivo de aplicar e expandir meus conhecimentos na área de tecnologia e desenvolvimento de sistemas.</p>
+            <p>Meu nome é Vítor Luciano Cardoso Noé, nasci em 7 de julho de 2005...</p>
         </div>
 
         <div class="section" id="education">
             <h2>Formação Acadêmica</h2>
             <p><strong>Ensino Médio Completo:</strong> Concluído em 2023.</p>
-            <p><strong>Curso Técnico:</strong> Desenvolvimento de Sistemas Bilíngue - SenacRS (Em andamento).</p>
-            <p><strong>Inglês Avançado:</strong> Certificado pelo CNA após 9 anos de curso.</p>
         </div>
 
         <div class="section" id="skills">
@@ -193,7 +260,6 @@
             <h2>Contato</h2>
             <div class="contact-info">
                 <p>Email: <a href="mailto:vitorcardosonoe@gmail.com">vitorcardosonoe@gmail.com</a></p>
-                <p>Telefone: <a href="tel:+5551981172070">(51) 98117-2070</a></p>
             </div>
         </div>
 
@@ -204,13 +270,20 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section');
-            const delayBetweenSections = 500; // 500ms entre cada seção
+            const themeToggle = document.getElementById('theme-toggle');
+            const layoutToggle = document.getElementById('layout-toggle');
+            const body = document.body;
+            const skillsSection = document.querySelector('.skills');
 
-            sections.forEach((section, index) => {
-                setTimeout(() => {
-                    section.classList.add('visible');
-                }, delayBetweenSections * (index + 1));
+            // Alternar tema claro/escuro
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('light-theme');
+                themeToggle.innerHTML = body.classList.contains('light-theme') ? '&#x2190;' : '&#x2192;';
+            });
+
+            // Alternar layout de habilidades
+            layoutToggle.addEventListener('click', () => {
+                skillsSection.classList.toggle('column-layout');
             });
         });
     </script>
